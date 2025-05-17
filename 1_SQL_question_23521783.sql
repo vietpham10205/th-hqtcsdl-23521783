@@ -4,7 +4,7 @@
  select *from S_PRODUCT WHERE SUGGESTED_WHLSL_PRICE > 10 ;
       
  --1.Display the user id for employee 23.
- select USERID from S_EMP WHERE ID =23
+ select USERID from S_EMP WHERE ID =23;
 /*
 rpatel
 */
@@ -14,7 +14,10 @@ rpatel
 --Merge the first name and last name together, and title the column
 --Employees. (Use ‘||’ to merge columns).
 
-SELECT FIRST_NAME || ' ' || LAST_NAME AS Employees  ,DEPT_ID FROM S_EMP WHERE DEPT_ID IN ('10', '50') ORDER BY Employees ASC
+SELECT FIRST_NAME || ' ' || LAST_NAME AS Employees, DEPT_ID
+FROM S_EMP
+WHERE DEPT_ID IN (10, 50)
+ORDER BY LAST_NAME ASC;
 /*
 Audry Ropeburn	50
 Carmen Velasquez	50
@@ -23,7 +26,7 @@ Mark Quick-To-See	10
 
 --3. Display all employees whose last names contain an “s”.
 
-SELECT * FROM S_EMP WHERE LAST_NAME LIKE '%s%'
+SELECT * FROM S_EMP WHERE LAST_NAME LIKE '%s%';
 /*
 1	Velasquez	Carmen	cvelasqu	03-MAR-90			President	50	2500	
 15	Dumas	Andre	adumas	09-OCT-91		3	Sales Representative	35	1450	17.5
@@ -80,7 +83,7 @@ Dancs	860
 --Employee Name, and label the salary column Monthly Salary.
 
 SELECT LAST_NAME AS Employee_Name, SALARY AS Monthly_Salary FROM S_EMP 
-WHERE SALARY >1350 AND DEPT_ID IN ('31','42','50')
+WHERE SALARY >1350 AND DEPT_ID IN ('31','42','50');
 /*
 Velasquez	2500
 Nagayama	1400
@@ -91,7 +94,7 @@ Magee	1400
 --7 Display the last name and start date of every employee who was hired in 1991.
 
 SELECT LAST_NAME, START_DATE FROM S_EMP
-WHERE START_DATE BETWEEN '01-january-1991' AND '31-december-1991'
+WHERE START_DATE BETWEEN '01-january-1991' AND '31-december-1991';
 
 /*
 Nagayama	17-JUN-91
@@ -195,7 +198,7 @@ Schwartz (Stock Clerk)
 */
 
 --10.Display the product name for products that have “ski” in the name
-SELECT name FROM S_PRODUCT P WHERE NAME  LIKE '%Ski%'
+SELECT name FROM S_PRODUCT P WHERE NAME  LIKE '%Ski%';
 /*
 Ace Ski Boot
 Ace Ski Pole
@@ -247,7 +250,7 @@ ORDER BY months_employed DESC;
 --12.Display the highest and lowest order totals in the S_ORD. Label the
 --columns Highest and Lowest, respectively.
 
-SELECT * FROM S_ORD
+SELECT * FROM S_ORD;
 SELECT 
     MAX(total) AS Highest, 
     MIN(total) AS Lowest
@@ -411,7 +414,7 @@ Big John's Sports Emporium	10022	300
 
 --18.Display the id, full name of all employees with no manager
 SELECT * FROM s_emp 
-where manager_id is null
+where manager_id is null;
 /*
 1	Velasquez	Carmen	cvelasqu	03-MAR-90			President	50	2500	1	Velasquez	Carmen	cvelasqu	03-MAR-90			President	50	2500	
 */
@@ -434,7 +437,7 @@ Prostar 80 Pound Weight
 --20.Display all product ids, names and short descriptions (short_desc) for
 --all descriptions containing the word bicycle.
 SELECT ID, NAME, SHORT_DESC FROM s_product
-WHERE SHORT_DESC LIKE '%bicycle%'
+WHERE SHORT_DESC LIKE '%bicycle%';
 /*
 30321	Grand Prix Bicycle	Road bicycle
 30326	Himalaya Bicycle	Mountain bicycle
