@@ -1,4 +1,4 @@
- USE  class;
+
 
 --9. Display the employee last name and title in parentheses for all
 --employees. The report should look like the output below.
@@ -53,7 +53,7 @@ Schwartz (Stock Clerk)
 */
 
 --10.Display the product name for products that have “ski” in the name
-SELECT name FROM S_PRODUCT P WHERE NAME  LIKE '%Ski%'
+SELECT name FROM S_PRODUCT P WHERE NAME  LIKE '%Ski%';
 /*
 Ace Ski Boot
 Ace Ski Pole
@@ -63,13 +63,11 @@ Pro Ski Pole
 */
 
 
-SELECT * FROM S_EMP
-SELECT * FROM s_ord
+SELECT * FROM S_EMP;
+SELECT * FROM s_ord;
 
-SET SERVEROUTPUT ON;
+
 DECLARE 
-
- 
  CURSOR EMP_DUYET IS
  SELECT E.ID, E.LAST_NAME,
      EXTRACT(YEAR FROM date_ordered) AS order_year, 
@@ -143,5 +141,5 @@ WHERE S_EMP.ID = p_ID;
 return p_name;
 end;
 
-select LAYTENNV (3) from dual
-SELECT * FROM S_EMP
+select LAYTENNV (3) from dual;
+SELECT * FROM S_EMP;
