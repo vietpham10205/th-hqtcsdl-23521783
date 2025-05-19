@@ -242,9 +242,86 @@ Select * from project;
 -----------------------------------------t9
 Select * from project;
 
+----------------------------------------------Transaction Processing in PL/SQL
+
+CREATE TABLE accounts (account_id NUMBER(6), balance NUMBER (10,2),
+			check (balance>=0));
+INSERT INTO accounts VALUES (7715, 6350.00); 
+INSERT INTO accounts VALUES (7720, 5100.50); 
+COMMIT;
+----
+drop table accounts;
+----
+
+--------------------1.	Example: transfer money ($250) from account 7715 to 7720
+
+--t0
+SELECT * FROM accounts;
+--t1
+DECLARE
+  transfer NUMBER(8,2) := 250;
+BEGIN
+  UPDATE accounts SET balance = balance - transfer WHERE account_id = 7715;
+  UPDATE accounts SET balance = balance + transfer WHERE account_id = 7720;
+  COMMIT;
+END;
+--t2
+SELECT * FROM accounts;
+
+
+
+
+
+---------------------2.	Example: Transfer money ($9000) from account 7715 to 7720
+--t0
+SELECT * FROM accounts;
+
+--t1
+DECLARE
+  transfer NUMBER(8,2) := 9000;
+BEGIN
+  UPDATE accounts SET balance = balance - transfer WHERE account_id = 7715;
+  UPDATE accounts SET balance = balance + transfer WHERE account_id = 7720;
+  COMMIT;
+END;
+
+--t2
+SELECT * FROM accounts;
+
+
+-------------------------3.	Example: Transfer money ($9000) from account 7715 to 7720
+--t0
+SELECT * FROM accounts;
+--t1
+DECLARE
+  transfer NUMBER(8,2) := 9000;
+BEGIN
+    UPDATE accounts SET balance = balance + transfer WHERE account_id = 7720;
+    UPDATE accounts SET balance = balance - transfer WHERE account_id = 7715;
+  COMMIT;
+END;
+--t2
+SELECT * FROM accounts;
+
+
+-----------------------------4.	Example: Transfer money ($9000) from account 7715 to 7720
 
 
 
 
 
 
+-----------------------------5.	Example: PL/SQL WITH EXCEPTION
+
+
+
+
+
+------------------------------6.	Example: PL/SQL WITH EXCEPTION
+
+
+
+
+
+
+------------------------------7.	Example: PL/SQL WITH EXCEPTION
