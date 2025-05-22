@@ -306,22 +306,85 @@ SELECT * FROM accounts;
 
 -----------------------------4.	Example: Transfer money ($9000) from account 7715 to 7720
 
-
-
+--t0
+SELECT * FROM accounts;
+--t1
+DECLARE
+  transfer NUMBER(8,2) := 9000;
+BEGIN
+    UPDATE accounts SET balance = balance + transfer WHERE account_id = 7720;
+    COMMIT;
+    UPDATE accounts SET balance = balance - transfer WHERE account_id = 7715;
+  COMMIT;
+END;
+--t2
+SELECT * FROM accounts;
 
 
 
 -----------------------------5.	Example: PL/SQL WITH EXCEPTION
-
-
-
+--t0
+SELECT * FROM accounts;
+--t1
+SET SERVEROUTPUT ON
+DECLARE
+  transfer NUMBER(8,2) := 9000;
+BEGIN
+    UPDATE accounts SET balance = balance + transfer WHERE account_id = 7720;
+    UPDATE accounts SET balance = balance - transfer WHERE account_id = 7715;
+  COMMIT;
+    EXCEPTION WHEN OTHERS THEN
+        Dbms_output.put_line ('error!!!!!!!!! ');
+END;
+--t2
+SELECT * FROM accounts;
 
 
 ------------------------------6.	Example: PL/SQL WITH EXCEPTION
-
-
-
-
-
+--t0
+SELECT * FROM accounts;
+--t1
+SET SERVEROUTPUT ON
+DECLARE
+  transfer NUMBER(8,2) := 9000;
+BEGIN
+    UPDATE accounts SET balance = balance + transfer WHERE account_id = 7720;
+    UPDATE accounts SET balance = balance - transfer WHERE account_id = 7715;
+  COMMIT;
+    EXCEPTION WHEN OTHERS THEN
+        RAISE;        
+END;
+--t2
+SELECT * FROM accounts;
 
 ------------------------------7.	Example: PL/SQL WITH EXCEPTION
+--t0
+SELECT * FROM accounts;
+--t1
+SET SERVEROUTPUT ON
+DECLARE
+  transfer NUMBER(8,2) := 9000;
+BEGIN
+    UPDATE accounts SET balance = balance + transfer WHERE account_id = 7720;
+COMMIT;
+    UPDATE accounts SET balance = balance - transfer WHERE account_id = 7715;
+  
+    EXCEPTION WHEN OTHERS THEN
+        RAISE;        
+END;
+
+--t2
+SELECT * FROM accounts;
+
+
+
+
+
+
+
+
+
+
+
+
+
